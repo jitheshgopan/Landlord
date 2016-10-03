@@ -23,7 +23,7 @@ trait BelongsToTenant
         static::addGlobalScope($tenantScope);
 
         // Add an observer that will automatically add the tenant id when create()-ing
-        static::creating(function (Model $model) use ($tenantScope) {
+        static::updating(function (Model $model) use ($tenantScope) {
             $tenantScope->creating($model);
         });
     }
